@@ -1,0 +1,47 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+permissions:
+  contents: read
+  checks: write
+jobs:
+  validate-terraform:
+    runs-on: ubuntu-latest
+    name: Validate Terraform modules
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: terraform fmt (aws/terraform/base/memorydb)
+        uses: dflook/terraform-fmt-check@v1
+        if: always()
+        with:
+          path: aws/terraform/base/memorydb
+      - name: terraform validate (aws/terraform/base/memorydb)
+        uses: dflook/terraform-validate@v1
+        if: always()
+        with:
+          path: aws/terraform/base/memorydb
+      - name: terraform fmt (aws/terraform/base/memorydb/example)
+        uses: dflook/terraform-fmt-check@v1
+        if: always()
+        with:
+          path: aws/terraform/base/memorydb/example
+      - name: terraform validate (aws/terraform/base/memorydb/example)
+        uses: dflook/terraform-validate@v1
+        if: always()
+        with:
+          path: aws/terraform/base/memorydb/example
+      - name: terraform fmt (aws/terraform/recipes/redis-memorydb)
+        uses: dflook/terraform-fmt-check@v1
+        if: always()
+        with:
+          path: aws/terraform/recipes/redis-memorydb
+      - name: terraform validate (aws/terraform/recipes/redis-memorydb)
+        uses: dflook/terraform-validate@v1
+        if: always()
+        with:
+          path: aws/terraform/recipes/redis-memorydb
