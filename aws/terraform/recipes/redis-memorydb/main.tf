@@ -22,6 +22,6 @@ module "memory_db" {
   }
 
   // Configure networking based on the environment.
-  subnet_ids         = var.subnet_ids
+  subnet_group_name = var.subnet_group_name
   security_group_ids = var.security_group_ids
 }

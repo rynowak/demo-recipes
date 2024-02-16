@@ -3,9 +3,9 @@ variable "context" {
   type        = any
 }
 
-variable "subnet_ids" {
-  description = "This variable contains a list of subnet IDs."
-  type        = list(string)
+variable "subnet_group_name" {
+  description = "The existing subnet group to use."
+  type        = string
 }
 
 variable "security_group_ids" {

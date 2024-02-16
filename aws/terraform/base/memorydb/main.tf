@@ -44,8 +44,7 @@ module "memory_db" {
 
 
   // Networking
-  subnet_ids               = var.subnet_ids
   security_group_ids       = var.security_group_ids
-  subnet_group_name        = local.name
-  subnet_group_description = local.description
+  subnet_group_name        = var.subnet_group_name
+  create_subnet_group = false
 }
