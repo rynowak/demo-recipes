@@ -45,3 +45,23 @@ jobs:
         if: always()
         with:
           path: aws/terraform/recipes/redis-memorydb
+      - name: terraform fmt (aws/terraform/recipes/sqlserver-rds)
+        uses: dflook/terraform-fmt-check@v1
+        if: always()
+        with:
+          path: aws/terraform/recipes/sqlserver-rds
+      - name: terraform validate (aws/terraform/recipes/sqlserver-rds)
+        uses: dflook/terraform-validate@v1
+        if: always()
+        with:
+          path: aws/terraform/recipes/sqlserver-rds
+      - name: terraform fmt (aws/terraform/recipes/sqlserver-rds/example)
+        uses: dflook/terraform-fmt-check@v1
+        if: always()
+        with:
+          path: aws/terraform/recipes/sqlserver-rds/example
+      - name: terraform validate (aws/terraform/recipes/sqlserver-rds/example)
+        uses: dflook/terraform-validate@v1
+        if: always()
+        with:
+          path: aws/terraform/recipes/sqlserver-rds/example
